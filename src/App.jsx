@@ -2,6 +2,7 @@ import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import languages from './data/languages'
+import Card from "./Card.components"
 
 function App() {
   const [selected_id, setSelected_id] = useState(0)
@@ -13,10 +14,7 @@ function App() {
         {languages.map((language, index) => (
           <button key={index} className={`btn btn-primary m-2 ${selected_id == index ? "selected" : ""}`} onClick={() => setSelected_id(index)}>{language.title}</button>
         ))}
-        <div key={languages[selected_id].id} className="card p-1 mt-4">
-          <h2>{languages[selected_id].title}</h2>
-          <p>{languages[selected_id].description}</p>
-        </div>
+        <Card id={languages[selected_id].id} title={languages[selected_id].title} description={languages[selected_id].description} />
       </div>
     </>
   )
