@@ -10,7 +10,9 @@ function App() {
     <>
       <h1 className='fw-bold fs-1' >Learn Web Development</h1>
       <div className="container mt-5">
-        <button className='btn btn-primary'>{languages[0].title}</button>
+        {languages.map((language, index) => (
+          <button key={index} className='btn btn-primary m-2'>{language.title}</button>
+        ))}
         <div key={languages[0].id} className="card p-1 mt-4">
           <h2>{languages[0].title}</h2>
           <p>{languages[0].description}</p>
