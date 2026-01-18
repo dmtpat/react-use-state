@@ -5,7 +5,7 @@ import languages from './data/languages'
 import Card from "./Card.components"
 
 function App() {
-  const [selected_id, setSelected_id] = useState(0)
+  const [selected_id, setSelected_id] = useState(-1)
 
   return (
     <>
@@ -14,7 +14,10 @@ function App() {
         {languages.map((language, index) => (
           <button key={index} className={`btn btn-primary m-2 ${selected_id == index ? "selected" : ""}`} onClick={() => setSelected_id(index)}>{language.title}</button>
         ))}
-        <Card id={languages[selected_id].id} title={languages[selected_id].title} description={languages[selected_id].description} />
+        {selected_id >= 0 && <Card id={languages[selected_id].id} title={languages[selected_id].title} description={languages[selected_id].description} />
+        }
+        {selected_id < 0 && <Card id={selected_id} title={"None"} description={"Nessun linguaggion selezionato"} />
+        }
       </div>
     </>
   )
